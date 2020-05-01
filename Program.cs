@@ -37,7 +37,7 @@ namespace Snake
             //Background music code
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Waltz-music-loop.wav";
-            player.Play();
+            player.PlayLooping();
 
             //max - Creates an array that has four directions
             Position[] directions = new Position[]
@@ -187,7 +187,7 @@ namespace Snake
                     lastFoodTime = Environment.TickCount;
 
                     SetFood();
-
+                    
                     //decrease the sleepTime
                     sleepTime--;
 
@@ -232,7 +232,7 @@ namespace Snake
                 SetFood();
 
                 //Add winning requirement
-                if (snakeElements.Count == 7)
+                if (snakeElements.Count == 30)
                 {
                     Win();
                     Console.Read();
