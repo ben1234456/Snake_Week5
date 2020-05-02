@@ -275,55 +275,77 @@ namespace Snake
             //lose
             void Lose()
             {
-                int x = Console.WindowWidth / 2;
                 int y = Console.WindowHeight / 2;
+                string text1 = "Game over!";
+                string text2 = "Your points are: ";
+                string text3 = "Press enter to quit the game";
+
+                int text1length = text1.Length;
+                int text2length = text2.Length;
+                int text3length = text3.Length;
+
+                int text1start = (Console.WindowWidth - text1length) / 2;
+                int text2start = (Console.WindowWidth - text2length) / 2;
+                int text3start = (Console.WindowWidth - text3length) / 2;
+
                 //Set Game over to middle of the window
-                Console.SetCursorPosition(x,y);
+                Console.SetCursorPosition(text1start, y);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Game over!");
-            
-				
+                Console.WriteLine(text1);
+
+
                 int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoints < 0) userPoints = 0;
 
                 //Set Score to middle of the window
-                Console.SetCursorPosition(x, y+1);
+                Console.SetCursorPosition(text2start, y + 1);
                 userPoints = Math.Max(userPoints, 0);
-                Console.WriteLine("Your points are: {0}", userPoints);
+                Console.WriteLine("{0}{1}", text2, userPoints);
 
                 //Add player score into plain text file.
-                StreamWriter snakeFile = new StreamWriter("Snake_Score.txt", true);
-                snakeFile.Write("Your high score is: " + userPoints + "\n");
+                StreamWriter snakeFile = new StreamWriter("Snake_Score.txt", true);               
+                snakeFile.Write(userPoints + "\n");
                 snakeFile.Close();
 
                 //Set instruction to middle of window
-                Console.SetCursorPosition(x, y+2);
-                Console.WriteLine("Press Enter to quit the game");
+                Console.SetCursorPosition(text3start, y + 2);
+                Console.WriteLine(text3);
             }
 
             void Win()
             {
-                int x = Console.WindowWidth / 2;
                 int y = Console.WindowHeight / 2;
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine("YOU WIN!!");
+                string text1 = "You Win!!!!";
+                string text2 = "Your points are: ";
+                string text3 = "Press enter to quit to the game";
+
+                int text1length = text1.Length;
+                int text2length = text2.Length;
+                int text3length = text3.Length;
+
+                int text1start = (Console.WindowWidth - text1length) / 2;
+                int text2start = (Console.WindowWidth - text2length) / 2;
+                int text3start = (Console.WindowWidth - text3length) / 2;
+
+                Console.SetCursorPosition(text1start, y);
+                Console.WriteLine(text1);
 
                 int userPoints = (snakeElements.Count - 4) * 100 - negativePoints;
                 if (userPoints < 0) userPoints = 0;
 
                 //Set Score to middle of the window
-                Console.SetCursorPosition(x, y+1);
+                Console.SetCursorPosition(text2start, y + 1);
                 userPoints = Math.Max(userPoints, 0);
-                Console.WriteLine("Your points are: {0}", userPoints);
+                Console.WriteLine("{0}{1}", text2, userPoints);
 
                 //Add player score into plain text file.
                 StreamWriter snakeFile = new StreamWriter("Snake_Score.txt", true);
-                snakeFile.Write("Your high score is: " + userPoints + "\n");
+                snakeFile.Write(userPoints + "\n");
                 snakeFile.Close();
 
                 //Set instruction to middle of window
-                Console.SetCursorPosition(x, y+2);
-                Console.WriteLine("Press Enter to quit the game");
+                Console.SetCursorPosition(text3start, y + 2);
+                Console.WriteLine(text3);
             }
         }
     }

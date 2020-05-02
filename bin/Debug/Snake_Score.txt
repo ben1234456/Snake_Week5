@@ -26,3 +26,4 @@ Your high score is: 387
 Your high score is: 0
 Your high score is: 456
 Your high score is: 575
+242
